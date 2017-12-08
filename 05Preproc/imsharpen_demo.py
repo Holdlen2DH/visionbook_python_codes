@@ -37,7 +37,6 @@ lap_y = np.gradient(gy)
 lap_ysc = C * lap_y
 
 y_sharp = y - lap_ysc
-print(y_sharp)
 y_sharp_bound = y_sharp.copy()
 y_sharp_bound[y_sharp > 255] = 255
 y_sharp_bound[y_sharp < 0] = 0
