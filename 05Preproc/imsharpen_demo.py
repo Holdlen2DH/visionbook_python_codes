@@ -8,10 +8,60 @@ import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
 import matplotlib.lines as lines
-
 plt.style.use('seaborn')
-
 current_dir = os.path.dirname(os.path.realpath(__file__))
+output_dir = current_dir + "/output_images"
+
+def imsharpen(img, C, verbosity = 0):
+    """
+    Function imsharpen sharpens an image by emphasizing places with high gradients.
+    Sharpening is computed by substracting a weighted Laplacian from the blurred image.
+    """
+    # convert the input image to double precision,
+    # integers casue errors in gradient computation
+    im_out = None
+    im = img.astype(np.float)
+    # compute the first derivatives
+    gradY, gradX = np.gradient(im)
+    # compute the seconde derivatives
+    sqgradX = np.gradient(gradX, axis = 1)
+    sqgradY = np.gradient(gradY, axis = 0)
+
+    lap_im = sqgradX + sqgradY
+
+    # sharpen the image
+    im_out = im - C * lap_im
+
+    # truncate values smaller than 0 and higher than 255
+    im_out[im_out > 255] = 255
+    im_out[im_out < 0] = 0
+    im_out = np.uint8(im_out)
+
+    if verbosity > 0:
+        plt.figure()
+        plt.subplot(2, 2, 1)
+        plt.imshow(gradX, cmap = "gray")
+        plt.title("x-gradient $\it \partial I/\partial x$")
+
+        plt.subplot(2, 2, 2)
+        plt.imshow(gradY, cmap = "gray")
+        plt.title("y-gradient $\it \partial I/\partial y$")
+
+        plt.subplot(2, 2, 3)
+        plt.imshow(sqgradX, cmap = "gray")
+        plt.title("$\it \partial^2 I/\partial^2 x$")
+
+        plt.subplot(2, 2, 4)
+        plt.imshow(sqgradY, cmap = "gray")
+        plt.title("$\it \partial^2 I/\partial^2 y$")
+        plt.tight_layout()
+        plt.savefig(output_dir + "/sharpen_gradients.jpg")
+
+        plt.figure()
+        plt.imshow(lap_im, cmap = "gray")
+        plt.title("Laplacian:" + r"$\it \bigtriangledown = \partial^2 I/\partial^2 x + \partial^2 I/\partial^2 y$")
+        plt.savefig(output_dir + "/sharpen_laplacian.jpg")
+    return im_out
 
 step = 1
 x1 = np.arange(1, 101, step)
@@ -83,17 +133,29 @@ l2 = lines.Line2D([do_high, do_high], [ymin, ymax], color = 'k', linewidth = 1)
 ax4.add_line(l1)
 ax4.add_line(l2)
 ax4.set_title("Improved signal $f - \it C \partial^2 f / \partial^2 x$")
-
-
 plt.tight_layout()
+plt.savefig(output_dir + "/imsharpen_1D.jpg")
+
+# image sharpening
+img = Image.open(current_dir + "/images/patterns.png")
+print(img.format, img.size, img.mode)
+
+img_data = np.asarray(img, dtype = np.uint8)
+
+IM = np.uint8(np.round(np.mean(img_data, axis = 2)))
+IM = IM[::2, ::2]
+
+plt.style.use('default')
+fig = plt.figure()
+plt.imshow(IM, cmap = "gray")
+plt.title("Original image")
+plt.savefig(output_dir + "/sharpen_input.jpg")
+
+C = 0.5
+IM_out = imsharpen(IM, C, 1)
+
+plt.figure()
+plt.imshow(IM_out, cmap = "gray")
+plt.title("Sharpened image, C = %0.1f"%C)
+plt.savefig(output_dir + "/sharpen_output.jpg")
 plt.show()
-
-
-# img = Image.open(current_dir + "/images/patterns.png")
-# print(img.format, img.size, img.mode)
-
-# img_data = np.asarray(img, dtype = np.uint8)
-
-# fig = plt.figure()
-# plt.imshow(img_data)
-# plt.show()
