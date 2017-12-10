@@ -7,7 +7,7 @@ You can download the matlab codes from http://visionbook.felk.cvut.cz/
 #### Chapter 2. The image, its representation and properties
 #### Chapter 3. The image, its mathematical and physical background
 #### Chapter 4. Data structers for image analysis
-#### [Chapter 5. Image pre-processing](./Contents/chapter5_Preproc.md)
+#### [Chapter 5. Image pre-processing](./Contents/chapter5_Preproc.html)
 #### Chapter 6. Segmentation I
 #### Chapter 7. Segmentation II
 #### Chapter 8. Shape representation and description
