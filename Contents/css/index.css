@@ -1,0 +1,233 @@
+/* #######################################################
+Grey Separator
+####################################################### */
+#container .greySeparator
+{
+	clear: both;
+	margin: 46px 0 0px 0px;
+	height: 1px;
+	background-color: #807873;
+}
+/* #######################################################
+---/ End Grey Separator
+####################################################### */
+
+
+
+
+
+/* #######################################################
+Intro
+####################################################### */
+#container .intro
+{
+	clear: both;
+	margin: 46px 0 0 0;
+	text-align: left;
+}
+
+#container .intro h1
+{
+	margin: 0;
+	padding: 0 0 5px 0;
+	font: normal 3em "Times New Roman", Times, serif;
+	color: #807873;
+	font-style: italic;
+}
+
+#container .intro .highlight
+{
+	font-weight: bold;
+	border-bottom: solid 2px #e97004;
+}
+
+#container .intro p
+{
+	margin: 25px 0 0 0;
+	padding: 0;
+	font: normal .75em "Times New Roman", Times, serif;
+	color: #373431;
+	line-height: 1.5em;
+}
+
+#container .intro a,
+#container .intro a:link,
+#container .intro a:active,
+#container .intro a:visited
+{
+	font-style: normal;
+	color: #e97004;
+	text-decoration: none;
+}
+
+#container .intro a:hover
+{
+	text-decoration: underline;
+}
+/* #######################################################
+---/ End Intro
+####################################################### */
+
+
+
+
+
+/* #######################################################
+Grey Separator Thick
+####################################################### */
+#container .greySeparatorThick
+{
+	clear: both;
+	margin: 46px 0 0 50px;
+	height: 6px;
+	background-color: #807873;
+}
+/* #######################################################
+---/ End Grey Separator Thick
+####################################################### */
+
+
+
+#container .description
+{
+	float: left;
+	margin: 46px 0px 0px 0px;
+	text-align: left;
+	width: 600px;
+}
+
+#container .description h1
+{
+	font: normal 0.75em "Times New Roman", Times, serif;
+	color: #b73c0c;
+}
+
+#container .description h2
+{
+	padding: 0 0 10px 0;
+	font: normal 0.583em "Times New Roman", Times, serif;
+	color: #807873;
+	font-style: italic;
+	border-bottom: 1px solid #807873;
+}
+
+#container .description a
+{
+    padding: 0 0 10px 0;
+	font: normal 1em "Times New Roman", Times, serif;
+	color: #373431;
+
+
+}
+
+
+#container .description p
+{
+	margin: 20px 0 20px 0;
+	font: normal 0.583em "Times New Roman", Times, serif;
+	color: #373431;
+	line-height: 1.5em;
+}
+
+
+
+
+/*######################################################
+---/ End Description
+##################################################### */
+
+
+
+
+
+/*######################################################
+Image
+##################################################### */
+#container .image
+{
+	float: right;
+	margin: 70px 30px 0 0;
+}
+
+
+/*#####################################################
+Log
+#####################################################  */
+
+ .thetext{
+
+padding:10px;
+
+margin:0;
+text-align: left;
+	font: normal  0.5em "Times New Roman", Times, serif;
+	color: #373431;
+}
+
+#container .thetext span{
+
+color:#666666;
+font: bold 1.2em "Times New Roman", Times, serif;
+margin:0;
+
+}
+
+
+#container .left_box1{
+
+margin-top:5px;
+
+margin-bottom:5px;
+
+line-height:normal;
+
+float:left;
+
+width:180px;
+height:70px;
+
+margin:10px 10px 10px 0;
+
+background-color:#CCCCCC;
+
+}
+
+#container .left_box1 p{
+
+margin-bottom:0;
+
+
+}
+
+
+.w3-btn, .w3-btn-block {
+    border: none;
+    display: inline-block;
+    outline: 0;
+    padding: 6px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none !important;
+    color: #fff;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap
+}
+
+.w3-padding-large {
+    padding: 12px 24px !important
+}
+
+.w3-white {
+    color: #000 !important;
+    background-color: #fff !important
+}
+
+.w3-hover-border-black:hover {
+    border-color: #000 !important
+}
+
+.w3-border {
+    border: 1px solid #ccc !important
+}
