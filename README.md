@@ -4,5 +4,3 @@ You can download the matlab codes from[ Image Processing, Analysis, and Machine 
 **For more information, you can refer to my blog of this project [Visionbook python codes
 for Image Preprocessing, Analysis and Machine Vision](https://holdlen2dh.github.io/visionbook_python_codes/index.html)**
 
-
-fds
