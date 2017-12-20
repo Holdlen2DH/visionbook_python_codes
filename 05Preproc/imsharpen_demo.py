@@ -1,7 +1,7 @@
 """
 demo of imashapen Image sharping.
 
-by Holdlen2DH 2017-11-29
+by Holdlen2DH 2017-11-29 holdlen2dh@126.com
 """
 import os
 import numpy as np
