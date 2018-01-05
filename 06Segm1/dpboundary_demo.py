@@ -1,8 +1,8 @@
 """
 Demo showing the useage of dpboundary.
-As the matlab codes, it demonstrates dpboundary on the task of tracing
-a blood vessel on part of an MRI image of a lower limb. Since the vessel 
-is bright, it takes a negative value of the brightness as the cost function.
+As the matlab codes, it demonstrates dpboundary on the task of tracing a blood 
+vessel on part of an MRI image of a lower limb. Since the vessel is bright, it 
+takes a negative value of the brightness as the cost function.
 
 dp means dynamic programming, which based on the principle of optimality.
 
@@ -21,9 +21,9 @@ def dpboundary(IM):
     """
     Boundary tracing using dynamic programming.
 
-    IM is a m-by-n scalar input image with values representing the cost
-    of a path going through a pixel.
-    the returned x is the x coordinates of the optimal path.
+    IM is a m-by-n scalar input image with values representing the cost of a 
+    path going through a pixel. 
+    The returned x is the x coordinates of the optimal path.
     """
 
     # initial the matrix c which will contain for each pixel the total cost
@@ -33,14 +33,15 @@ def dpboundary(IM):
     # or (y - 1, x - 1), respectively.
     M, N = IM.shape
     c = np.zeros((M, N))
-    p = np.zeros((M, N), dtype = 'uint8')        # save memory by using 8bit integers
+    p = np.zeros((M, N), dtype = 'uint8')   # save memory by using 8bit integers
     c[0, :] = IM[0, :]
 
-    # the first pass of the algorithm goes through the image matrix c from the first
-    # to the last row. For each row of c, we assemble a matrix d; each row of d corresponds
-    # to one alternative (no shift, left shift, right shift) and contains the cost of reaching
-    # the current row of c. Note how the optimal choice is found in parallel for thw whole 
-    # row using the vectorized min function.
+    # the first pass of the algorithm goes through the image matrix c from the 
+    # first to the last row. For each row of c, we assemble a matrix d; each row 
+    # of d corresponds to one alternative (no shift, left shift, right shift) 
+    # and contains the cost of reaching the current row of c. Note how the 
+    # optimal choice is found in parallel for thw whole row using the vectorized 
+    # min function.
     for i in range(1, M, 1):
         c0 = c[i - 1, :]
        
@@ -55,12 +56,13 @@ def dpboundary(IM):
         c[i, :] = np.min(d, axis = 0)
         p[i, :] = np.argmin(d, axis = 0)
 
-    # The second part of the algorithm follows the optimal path from 'cheapest' node xpos in 
-    # the last row back to the first row, using the information from p and creating x on the way.
-    # We take care not to leave the image boundaries.
+    # The second part of the algorithm follows the optimal path from 'cheapest' 
+    # node xpos in the last row back to the first row, using the information 
+    # from p and creating x on the way. We take care not to leave the image 
+    # boundaries.
 
     x = np.zeros((M, 1))
-    cost = np.min(c[M - 1, :])
+    # cost = np.min(c[M - 1, :])
     xpos = np.argmin(c[M  - 1, :])
 
     for i in range(M - 1, 0, -1):
